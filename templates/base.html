@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant Usage Clustering Analysis | Research Paper 2025</title>
+    <link rel="stylesheet" href="../static/output.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .code-font { font-family: 'JetBrains Mono', monospace; }
+        .research-card { 
+            backdrop-filter: blur(10px); 
+            background: rgba(17, 24, 39, 0.8);
+            border: 1px solid rgba(75, 85, 99, 0.3);
+        }
+        .image-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .image-hover:hover { transform: scale(1.02); }
+        .gradient-text { 
+            background: linear-gradient(135deg, #60a5fa, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .research-section { 
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+            border-left: 4px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 font-sans min-h-screen">
+    {% block content %}
+    <!-- Hero Section -->
+    <div class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-emerald-500/10"></div>
+        <header class="relative py-16 px-4 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-6xl font-bold mb-4 gradient-text">
+                    AI Assistant Usage Clustering Analysis
+                </h1>
+                <p class="text-xl text-gray-300 mb-2">A Comprehensive Machine Learning Study</p>
+                <p class="text-lg text-gray-400 mb-8">Understanding Student Behavior Patterns Through Data Science • 2025</p>
+                
+                <!-- Author & Affiliation -->
+                <div class="research-card rounded-xl p-6 max-w-2xl mx-auto">
+                    <p class="text-gray-200 font-medium">Poushali Bhattacharyya</p>
+                    <p class="text-gray-400 text-sm">Data Science Researcher • Machine Learning Engineer</p>
+                    <div class="flex justify-center space-x-4 mt-4">
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 text-xs rounded-full">K-Means Clustering</span>
+                        <span class="px-3 py-1 bg-emerald-500/20 text-emerald-300 text-xs rounded-full">PCA Analysis</span>
+                        <span class="px-3 py-1 bg-purple-500/20 text-purple-300 text-xs rounded-full">Behavioral Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <main class="max-w-7xl mx-auto py-12 px-4">
+        
+        <!-- Abstract Section -->
+        <section class="mb-16">
+            <div class="research-card rounded-2xl p-8">
+                <h2 class="text-3xl font-bold text-white mb-6 flex items-center">
+                    <span class="w-2 h-8 bg-blue-500 rounded mr-4"></span>
+                    Abstract
+                </h2>
+                <p class="text-gray-300 leading-relaxed text-lg">
+                    This study presents a comprehensive analysis of AI assistant usage patterns among students using 
+                    unsupervised machine learning techniques. Through K-Means clustering and Principal Component Analysis (PCA), 
+                    we identified distinct behavioral patterns in how students interact with AI tools across different academic 
+                    disciplines and task types. Our findings reveal significant correlations between satisfaction ratings, 
+                    assistance levels, and final outcomes, providing insights for educational technology development.
+                </p>
+                <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="bg-gray-800/50 rounded-lg p-4">
+                        <div class="text-2xl font-bold text-blue-400">3</div>
+                        <div class="text-sm text-gray-400">Clusters Identified</div>
+                    </div>
+                    <div class="bg-gray-800/50 rounded-lg p-4">
+                        <div class="text-2xl font-bold text-emerald-400">9</div>
+                        <div class="text-sm text-gray-400">Features Analyzed</div>
+                    </div>
+                    <div class="bg-gray-800/50 rounded-lg p-4">
+                        <div class="text-2xl font-bold text-purple-400">7</div>
+                        <div class="text-sm text-gray-400">Disciplines Covered</div>
+                    </div>
+                    <div class="bg-gray-800/50 rounded-lg p-4">
+                        <div class="text-2xl font-bold text-orange-400">15+</div>
+                        <div class="text-sm text-gray-400">Visualizations</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Interactive Prediction Section -->
+        <section class="mb-16">
+            <div class="research-card rounded-2xl p-8">
+                <h2 class="text-3xl font-bold text-white mb-6 flex items-center">
+                    <span class="w-2 h-8 bg-emerald-500 rounded mr-4"></span>
+                    Interactive Model Prediction
+                </h2>
+                <p class="text-gray-300 mb-6 text-lg">
+                    Experience our trained clustering model firsthand. Input your academic and AI usage patterns to discover 
+                    which behavioral cluster you belong to based on our research findings.
+                </p>
+                <div class="bg-gradient-to-r from-emerald-500/10 to-blue-500/10 rounded-xl p-6 border border-emerald-500/20">
+                    <div class="flex flex-col lg:flex-row items-center justify-between">
+                        <div class="mb-4 lg:mb-0">
+                            <h3 class="text-xl font-semibold text-white mb-2">Try the Model</h3>
+                            <p class="text-gray-400">Answer 9 questions about your AI usage patterns</p>
+                        </div>
+                        <a href="/fields" class="bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            Start Prediction →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Methodology Section -->
+        <section class="mb-16">
+            <div class="research-card rounded-2xl p-8">
+                <h2 class="text-3xl font-bold text-white mb-6 flex items-center">
+                    <span class="w-2 h-8 bg-purple-500 rounded mr-4"></span>
+                    Methodology & Approach
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="research-section rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-white mb-4">🔬 Data Preprocessing</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>• Feature scaling and normalization</li>
+                            <li>• Categorical variable encoding</li>
+                            <li>• Missing value imputation</li>
+                            <li>• Outlier detection and treatment</li>
+                        </ul>
+                    </div>
+                    <div class="research-section rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-white mb-4">📊 Analysis Techniques</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>• K-Means clustering algorithm</li>
+                            <li>• Principal Component Analysis (PCA)</li>
+                            <li>• Elbow method for optimal K</li>
+                            <li>• Silhouette score validation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Visualization Gallery -->
+        <section class="mb-16">
+            <div class="research-card rounded-2xl p-8">
+                <h2 class="text-3xl font-bold text-white mb-6 flex items-center">
+                    <span class="w-2 h-8 bg-orange-500 rounded mr-4"></span>
+                    Data Visualization Gallery
+                </h2>
+                
+                <!-- Primary Cluster Visualization -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-semibold text-white mb-4">Principal Component Analysis - Cluster Visualization</h3>
+                    <div class="bg-white rounded-xl p-4 shadow-2xl">
+                        <img src="static/Images/clusters.png" 
+                             alt="PCA Cluster Visualization" 
+                             class="w-full rounded-lg image-hover shadow-lg"/>
+                    </div>
+                    <p class="mt-4 text-gray-400 text-center italic">
+                        2D projection of multi-dimensional student behavior data showing 4 distinct clusters
+                    </p>
+                </div>
+
+                <!-- Feature Distribution Gallery -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold text-white mb-6">Feature Distribution Analysis</h3>
+                    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+                        
+                        <!-- Student Level Distribution -->
+                        <div class="bg-gray-800/50 rounded-xl p-4">
+                            <h4 class="text-lg font-medium text-white mb-3">Student Academic Level</h4>
+                            <img src="static/Images/CountPLOTStudentLevel.png" 
+                                 alt="Student Level Distribution" 
+                                 class="w-full rounded-lg image-hover"/>
+                        </div>
+
+                        <!-- Discipline Distribution -->
+                        <div class="bg-gray-800/50 rounded-xl p-4">
+                            <h4 class="text-lg font-medium text-white mb-3">Academic Disciplines</h4>
+                            <img src="static/Images/CountPLOTDiscipline.png" 
+                                 alt="Discipline Distribution" 
+                                 class="w-full rounded-lg image-hover"/>
+                        </div>
+
+                        <!-- AI Assistance Level -->
+                        <div class="bg-gray-800/50 rounded-xl p-4">
+                            <h4 class="text-lg font-medium text-white mb-3">AI Assistance Levels</h4>
+                            <img src="static/Images/CountPLOTAI_AssistanceLevel.png" 
+                                 alt="AI Assistance Level Distribution" 
+                                 class="w-full rounded-lg image-hover"/>
+                        </div>
+
+                        <!-- Task Type Distribution -->
+                        <div class="bg-gray-800/50 rounded-xl p-4">
+                            <h4 class="text-lg font-medium text-white mb-3">Task Types</h4>
+                            <img src="static/Images/CountPLOTTaskType.png" 
+                                 alt="Task Type Distribution" 
+                                 class="w-full rounded-lg image-hover"/>
+                        </div>
+
+                        <!-- Final Outcome -->
+                        <div class="bg-gray-800/50 rounded-xl p-4">
+                            <h4 class="text-lg font-medium text-white mb-3">Final Outcomes</h4>
+                            <img src="static/Images/CountPLOTFinalOutcome.png" 
+                                 alt="Final Outcome Distribution" 
+                                 class="w-full rounded-lg image-hover"/>
+                        </div>
+
+                        <!-- Satisfaction Rating -->
+                        <div class="bg-gray-800/50 rounded-xl p-4">
+                            <h4 class="text-lg font-medium text-white mb-3">Satisfaction Ratings</h4>
+                            <img src="static/Images/CountPLOTSatisfactionRating.png" 
+                                 alt="Satisfaction Rating Distribution" 
+                                 class="w-full rounded-lg image-hover"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Continuous Variable Distributions -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold text-white mb-6">Continuous Variable Analysis</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        
+                        <!-- Session Length Distribution -->
+                        <div class="bg-gray-800/50 rounded-xl p-4">
+                            <h4 class="text-lg font-medium text-white mb-3">Session Length Distribution</h4>
+                            <img src="static/Images/DistOfSessionLengthMin.png" 
+                                 alt="Session Length Distribution" 
+                                 class="w-full rounded-lg image-hover"/>
+                        </div>
+
+                        <!-- Total Prompts Distribution -->
+                        <div class="bg-gray-800/50 rounded-xl p-4">
+                            <h4 class="text-lg font-medium text-white mb-3">Total Prompts Distribution</h4>
+                            <img src="static/Images/DistOfTotalPrompts.png" 
+                                 alt="Total Prompts Distribution" 
+                                 class="w-full rounded-lg image-hover"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced Analysis -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold text-white mb-6">Advanced Cluster Analysis</h3>
+                    <div class="bg-white rounded-xl p-4 shadow-2xl">
+                        <img src="static/Images/ScatterplotOfSessionTimeVsTotalPromptAndBasisOnClusters.png" 
+                             alt="Session Time vs Total Prompts Scatter Plot" 
+                             class="w-full rounded-lg image-hover"/>
+                    </div>
+                    <p class="mt-4 text-gray-400 text-center italic">
+                        Correlation analysis between session duration and total prompts, colored by cluster assignment
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Resources & Links -->
+        <section class="mb-16">
+            <div class="research-card rounded-2xl p-8">
+                <h2 class="text-3xl font-bold text-white mb-6 flex items-center">
+                    <span class="w-2 h-8 bg-blue-500 rounded mr-4"></span>
+                    Research Resources & Code
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    
+                    <!-- Dataset & Analysis Links -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-4">📊 Dataset & Analysis</h3>
+                        <div class="space-y-3">
+                            <a href="https://www.kaggle.com/datasets/ayeshasal89/ai-assistant-usage-in-student-life-synthetic"
+                               class="block bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-lg p-4 hover:from-blue-500/20 hover:to-purple-500/20 transition-all duration-300"
+                               target="_blank">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">🗃️</span>
+                                    <div>
+                                        <div class="text-blue-400 font-medium">AI Assistant Usage Dataset</div>
+                                        <div class="text-gray-400 text-sm">Kaggle • Synthetic Student Data</div>
+                                    </div>
+                                </div>
+                            </a>
+                            
+                            <a href="https://www.kaggle.com/code/poushal02/ai-assistant-usage"
+                               class="block bg-gradient-to-r from-emerald-500/10 to-blue-500/10 border border-emerald-500/20 rounded-lg p-4 hover:from-emerald-500/20 hover:to-blue-500/20 transition-all duration-300"
+                               target="_blank">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">📓</span>
+                                    <div>
+                                        <div class="text-emerald-400 font-medium">Complete Analysis Notebook</div>
+                                        <div class="text-gray-400 text-sm">Kaggle • Detailed Code & Insights</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Social & Professional Links -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-4">👩‍💻 Connect & Collaborate</h3>
+                        <div class="space-y-3">
+                            <a href="https://github.com/Poushali-02/" target="_blank"
+                               class="block bg-gradient-to-r from-gray-500/10 to-gray-600/10 border border-gray-500/20 rounded-lg p-4 hover:from-gray-500/20 hover:to-gray-600/20 transition-all duration-300">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">⚡</span>
+                                    <div>
+                                        <div class="text-gray-300 font-medium">GitHub Portfolio</div>
+                                        <div class="text-gray-400 text-sm">Open Source Projects & Code</div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://www.kaggle.com/poushal02" target="_blank"
+                               class="block bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 rounded-lg p-4 hover:from-orange-500/20 hover:to-red-500/20 transition-all duration-300">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">🏆</span>
+                                    <div>
+                                        <div class="text-orange-400 font-medium">Kaggle Profile</div>
+                                        <div class="text-gray-400 text-sm">Data Science Competitions</div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/poushali-bhattacharyya-555238342" target="_blank"
+                               class="block bg-gradient-to-r from-blue-600/10 to-blue-700/10 border border-blue-600/20 rounded-lg p-4 hover:from-blue-600/20 hover:to-blue-700/20 transition-all duration-300">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">💼</span>
+                                    <div>
+                                        <div class="text-blue-400 font-medium">Professional Network</div>
+                                        <div class="text-gray-400 text-sm">LinkedIn • Career & Research</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Specifications -->
+        <section class="mb-16">
+            <div class="research-card rounded-2xl p-8">
+                <h2 class="text-3xl font-bold text-white mb-6 flex items-center">
+                    <span class="w-2 h-8 bg-red-500 rounded mr-4"></span>
+                    Technical Implementation
+                </h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-gray-800/50 rounded-xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
+                            🧠 Machine Learning
+                        </h3>
+                        <div class="space-y-2 text-gray-300 text-sm">
+                            <span class="code-font bg-gray-700/50 px-2 py-1 rounded">scikit-learn</span>
+                            <span class="code-font bg-gray-700/50 px-2 py-1 rounded">pandas</span>
+                            <span class="code-font bg-gray-700/50 px-2 py-1 rounded">numpy</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800/50 rounded-xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
+                            📊 Visualization
+                        </h3>
+                        <div class="space-y-2 text-gray-300 text-sm">
+                            <span class="code-font bg-gray-700/50 px-2 py-1 rounded">matplotlib</span>
+                            <span class="code-font bg-gray-700/50 px-2 py-1 rounded">seaborn</span>
+                            <span class="code-font bg-gray-700/50 px-2 py-1 rounded">plotly</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800/50 rounded-xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
+                            🌐 Web Framework
+                        </h3>
+                        <div class="space-y-2 text-gray-300 text-sm">
+                            <span class="code-font bg-gray-700/50 px-2 py-1 rounded">Flask</span>
+                            <span class="code-font bg-gray-700/50 px-2 py-1 rounded">Tailwind CSS</span>
+                            <span class="code-font bg-gray-700/50 px-2 py-1 rounded">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Citation & Feedback -->
+        <section class="mb-16">
+            <div class="research-card rounded-2xl p-8">
+                <h2 class="text-3xl font-bold text-white mb-6 flex items-center">
+                    <span class="w-2 h-8 bg-yellow-500 rounded mr-4"></span>
+                    Research Impact & Feedback
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Citation Box -->
+                    <div class="bg-gray-800/50 rounded-xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-4">📋 Cite This Research</h3>
+                        <div class="bg-gray-900/50 rounded-lg p-4 code-font text-sm text-gray-300">
+                          <a href="https://www.kaggle.com/code/poushal02/ai-assistant-usage">The Kaggle Notebook</a><br>
+                          <a href="https://www.kaggle.com/datasets/ayeshasal89/ai-assistant-usage-in-student-life-synthetic">The Kaggle Dataset</a>    
+                        </div>
+                    </div>
+
+                    <!-- Feedback Section -->
+                    <div class="bg-gray-800/50 rounded-xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-4">⭐ Rate This Research</h3>
+                        <form class="space-y-4">
+                            <div class="flex items-center justify-center space-x-2">
+                                <input type="radio" name="rating" id="star1" value="1" class="peer hidden" />
+                                <label for="star1" class="cursor-pointer text-3xl text-gray-400 peer-checked:text-yellow-400 hover:text-yellow-400 transition-colors">★</label>
+                                
+                                <input type="radio" name="rating" id="star2" value="2" class="peer hidden" />
+                                <label for="star2" class="cursor-pointer text-3xl text-gray-400 peer-checked:text-yellow-400 hover:text-yellow-400 transition-colors">★</label>
+                                
+                                <input type="radio" name="rating" id="star3" value="3" class="peer hidden" />
+                                <label for="star3" class="cursor-pointer text-3xl text-gray-400 peer-checked:text-yellow-400 hover:text-yellow-400 transition-colors">★</label>
+                                
+                                <input type="radio" name="rating" id="star4" value="4" class="peer hidden" />
+                                <label for="star4" class="cursor-pointer text-3xl text-gray-400 peer-checked:text-yellow-400 hover:text-yellow-400 transition-colors">★</label>
+                                
+                                <input type="radio" name="rating" id="star5" value="5" class="peer hidden" />
+                                <label for="star5" class="cursor-pointer text-3xl text-gray-400 peer-checked:text-yellow-400 hover:text-yellow-400 transition-colors">★</label>
+                            </div>
+                            <p class="text-center text-gray-400 text-sm">Help improve future research</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 py-8 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-gray-400">© 2025 Poushali Bhattacharyya • AI Assistant Usage Clustering Analysis</p>
+            <p class="text-gray-500 text-sm mt-2">Built with Flask, Tailwind CSS, and Machine Learning</p>
+        </div>
+    </footer>
+
+    {% endblock %}
+
+    {% block scripts %}{% endblock %}
+    {% block styles %}{% endblock %}
+
+</body>
+</html>

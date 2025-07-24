@@ -1,0 +1,777 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Enhanced Form Container with Glassmorphism -->
+<div class="min-h-screen flex items-center justify-center py-12 px-4">
+    <div class="max-w-2xl w-full">
+        <!-- Form Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold gradient-text mb-4">
+                AI Usage Pattern Assessment
+            </h1>
+            <p class="text-gray-400 text-lg">
+                Help us understand your AI interaction patterns through our research questionnaire
+            </p>
+        </div>
+
+        <!-- Main Form Card -->
+        <div class="research-card rounded-2xl p-8 backdrop-blur-xl">
+            <!-- Progress Section -->
+            <div class="mb-8">
+                <div class="flex justify-between items-center text-sm text-gray-300 mb-3">
+                    <span class="font-medium">Question <span id="currentQuestion" class="text-blue-400 font-bold">1</span> of <span id="totalQuestions" class="text-blue-400 font-bold">9</span></span>
+                    <span id="progressPercent" class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full font-medium">11%</span>
+                </div>
+                <div class="w-full bg-gray-700/50 rounded-full h-3 overflow-hidden">
+                    <div id="progressBar" class="bg-gradient-to-r from-blue-500 to-emerald-500 h-3 rounded-full transition-all duration-500 ease-out" style="width: 11%"></div>
+                </div>
+            </div>
+
+            <form id="multiStepForm" action="/predict" method="post" class="space-y-6">
+                <!-- Question 1: Student Level -->
+                <div class="question-step active">
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-icon">🎓</span>
+                            <h3 class="question-title">Academic Level</h3>
+                        </div>
+                        <p class="question-subtitle">What is your current academic level?</p>
+                        <select id="StudentLevel" name="StudentLevel" class="enhanced-select" required>
+                            <option value="">Select your academic level</option>
+                            <option value="Graduate">🎓 Graduate Student</option>
+                            <option value="High School">📚 High School Student</option>
+                            <option value="Undergraduate">🏛️ Undergraduate Student</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Question 2: Discipline -->
+                <div class="question-step">
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-icon">📊</span>
+                            <h3 class="question-title">Field of Study</h3>
+                        </div>
+                        <p class="question-subtitle">What discipline are you studying? (Select 'Other' if your field isn't listed)</p>
+                        <select id="Discipline" name="Discipline" class="enhanced-select" required>
+                            <option value="">Select your discipline</option>
+                            <option value="Computer Science">💻 Computer Science</option>
+                            <option value="Psychology">🧠 Psychology</option>
+                            <option value="Business">💼 Business</option>
+                            <option value="Biology">🔬 Biology</option>
+                            <option value="Math">📐 Mathematics</option>
+                            <option value="History">📜 History</option>
+                            <option value="Engineering">⚙️ Engineering</option>
+                            <option value="Other">🌟 Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Question 3: Session Length -->
+                <div class="question-step">
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-icon">⏱️</span>
+                            <h3 class="question-title">Session Duration</h3>
+                        </div>
+                        <p class="question-subtitle">How long do your typical AI assistance sessions last? (in minutes)</p>
+                        <input type="number" name="SessionLengthMin" id="SessionLengthMin" 
+                               class="enhanced-input" 
+                               placeholder="e.g., 30" 
+                               min="1" max="480" required />
+                        <div class="input-hint">💡 Consider your average time spent in a single session</div>
+                    </div>
+                </div>
+
+                <!-- Question 4: Total Prompts -->
+                <div class="question-step">
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-icon">💬</span>
+                            <h3 class="question-title">Interaction Frequency</h3>
+                        </div>
+                        <p class="question-subtitle">How many prompts did you use in your most recent session?</p>
+                        <input type="number" name="TotalPrompts" id="TotalPrompts" 
+                               class="enhanced-input" 
+                               placeholder="e.g., 15" 
+                               min="1" max="1000" required />
+                        <div class="input-hint">💡 Count all questions, requests, or commands you sent</div>
+                    </div>
+                </div>
+
+                <!-- Question 5: Task Type -->
+                <div class="question-step">
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-icon">📝</span>
+                            <h3 class="question-title">Primary Task Type</h3>
+                        </div>
+                        <p class="question-subtitle">What type of task do you most commonly use AI for?</p>
+                        <select name="TaskType" id="TaskType" class="enhanced-select" required>
+                            <option value="">Select primary task type</option>
+                            <option value="Studying">📖 Studying & Learning</option>
+                            <option value="Coding">💻 Programming & Coding</option>
+                            <option value="Writing">✍️ Writing & Documentation</option>
+                            <option value="Brainstorming">💡 Brainstorming & Ideas</option>
+                            <option value="Homework Help">📚 Homework Assistance</option>
+                            <option value="Research">🔍 Research & Analysis</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Question 6: AI Assistance Level -->
+                <div class="question-step">
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-icon">🤖</span>
+                            <h3 class="question-title">Assistance Level</h3>
+                        </div>
+                        <p class="question-subtitle">How would you rate the level of AI assistance you typically seek?</p>
+                        <select name="AI_AssistanceLevel" id="AI_AssistanceLevel" class="enhanced-select" required>
+                            <option value="">Select assistance level</option>
+                            <option value="1">🔹 Level 1 - Minimal (Quick questions)</option>
+                            <option value="2">🔸 Level 2 - Low (Simple guidance)</option>
+                            <option value="3">🔶 Level 3 - Moderate (Detailed help)</option>
+                            <option value="4">🔸 Level 4 - High (Comprehensive support)</option>
+                            <option value="5">🔹 Level 5 - Very High (Extensive collaboration)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Question 7: Final Outcome -->
+                <div class="question-step">
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-icon">🎯</span>
+                            <h3 class="question-title">Session Outcome</h3>
+                        </div>
+                        <p class="question-subtitle">What was the typical outcome of your AI assistance sessions?</p>
+                        <select name="FinalOutcome" id="FinalOutcome" class="enhanced-select" required>
+                            <option value="">Select typical outcome</option>
+                            <option value="Assignment Completed">✅ Assignment Completed</option>
+                            <option value="Idea Drafted">💡 Idea Drafted</option>
+                            <option value="Confused">❓ Left Confused</option>
+                            <option value="Gave Up">❌ Gave Up</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Question 8: Future Usage -->
+                <div class="question-step">
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-icon">🔮</span>
+                            <h3 class="question-title">Future Intent</h3>
+                        </div>
+                        <p class="question-subtitle">Based on your experience, would you use AI assistance again?</p>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="UsedAgain" value="True" required>
+                                <div class="radio-card">
+                                    <span class="radio-icon">✅</span>
+                                    <span class="radio-text">Yes, I would definitely use it again</span>
+                                </div>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="UsedAgain" value="False" required>
+                                <div class="radio-card">
+                                    <span class="radio-icon">❌</span>
+                                    <span class="radio-text">No, I wouldn't use it again</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 9: Satisfaction Rating -->
+                <div class="question-step">
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-icon">⭐</span>
+                            <h3 class="question-title">Satisfaction Rating</h3>
+                        </div>
+                        <p class="question-subtitle">How satisfied were you with the AI assistance overall?</p>
+                        <div class="star-rating">
+                            <input type="radio" name="SatisfactionRating" id="star5" value="5" required />
+                            <label for="star5" class="star-label" title="Excellent">★</label>
+                            
+                            <input type="radio" name="SatisfactionRating" id="star4" value="4" />
+                            <label for="star4" class="star-label" title="Very Good">★</label>
+                            
+                            <input type="radio" name="SatisfactionRating" id="star3" value="3" />
+                            <label for="star3" class="star-label" title="Good">★</label>
+                            
+                            <input type="radio" name="SatisfactionRating" id="star2" value="2" />
+                            <label for="star2" class="star-label" title="Fair">★</label>
+                            
+                            <input type="radio" name="SatisfactionRating" id="star1" value="1" />
+                            <label for="star1" class="star-label" title="Poor">★</label>
+                        </div>
+                        <div class="rating-labels">
+                            <span>Poor</span>
+                            <span>Excellent</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="navigation-buttons">
+                    <button type="button" id="prevBtn" class="btn-secondary" style="display: none;">
+                        ← Previous
+                    </button>
+                    <button type="button" id="nextBtn" class="btn-primary ml-auto">
+                        Next →
+                    </button>
+                    <button type="submit" id="submitBtn" class="btn-success ml-auto" style="display: none;">
+                        🚀 Submit Assessment
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Form Footer Info -->
+        <div class="text-center mt-8">
+            <p class="text-gray-400 text-sm">
+                🔒 Your responses are anonymous and used solely for research purposes
+            </p>
+            <p class="text-gray-500 text-xs mt-2">
+                This assessment takes approximately 2-3 minutes to complete
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+class MultiStepForm {
+    constructor() {
+        this.currentStep = 0;
+        this.steps = document.querySelectorAll('.question-step');
+        this.totalSteps = this.steps.length;
+        this.nextBtn = document.getElementById('nextBtn');
+        this.prevBtn = document.getElementById('prevBtn');
+        this.submitBtn = document.getElementById('submitBtn');
+        this.progressBar = document.getElementById('progressBar');
+        this.currentQuestionSpan = document.getElementById('currentQuestion');
+        this.totalQuestionsSpan = document.getElementById('totalQuestions');
+        this.progressPercentSpan = document.getElementById('progressPercent');
+
+        this.init();
+    }
+
+    init() {
+        // Set total questions
+        this.totalQuestionsSpan.textContent = this.totalSteps;
+        
+        // Add event listeners
+        this.nextBtn.addEventListener('click', () => this.nextStep());
+        this.prevBtn.addEventListener('click', () => this.prevStep());
+        this.submitBtn.addEventListener('click', () => this.handleSubmit());
+        
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => this.handleKeyPress(e));
+        
+        // Show first step
+        this.showStep(0);
+    }
+
+    showStep(step) {
+        // Hide all steps with fade out
+        this.steps.forEach(stepEl => {
+            stepEl.classList.remove('active');
+            stepEl.style.display = 'none';
+        });
+
+        // Show current step with fade in
+        setTimeout(() => {
+            this.steps[step].classList.add('active');
+            this.steps[step].style.display = 'block';
+        }, 150);
+
+        // Update progress with smooth animation
+        this.updateProgress();
+
+        // Update buttons
+        this.updateButtons();
+
+        // Focus on first input/select in current step
+        setTimeout(() => {
+            const firstInput = this.steps[step].querySelector('input, select');
+            if (firstInput) {
+                firstInput.focus();
+            }
+        }, 300);
+    }
+
+    updateProgress() {
+        const progress = ((this.currentStep + 1) / this.totalSteps) * 100;
+        
+        // Smooth progress bar animation
+        this.progressBar.style.width = progress + '%';
+        
+        // Update text with animation
+        this.currentQuestionSpan.textContent = this.currentStep + 1;
+        this.progressPercentSpan.textContent = Math.round(progress) + '%';
+        
+        // Add pulse effect to progress percentage
+        this.progressPercentSpan.style.transform = 'scale(1.1)';
+        setTimeout(() => {
+            this.progressPercentSpan.style.transform = 'scale(1)';
+        }, 200);
+    }
+
+    updateButtons() {
+        // Previous button
+        if (this.currentStep === 0) {
+            this.prevBtn.style.display = 'none';
+        } else {
+            this.prevBtn.style.display = 'inline-block';
+        }
+
+        // Next/Submit buttons
+        if (this.currentStep === this.totalSteps - 1) {
+            this.nextBtn.style.display = 'none';
+            this.submitBtn.style.display = 'inline-block';
+        } else {
+            this.nextBtn.style.display = 'inline-block';
+            this.submitBtn.style.display = 'none';
+        }
+    }
+
+    validateCurrentStep() {
+        const currentStepEl = this.steps[this.currentStep];
+        const inputs = currentStepEl.querySelectorAll('input[required], select[required]');
+        
+        for (let input of inputs) {
+            if (!input.value || input.value.trim() === '' || input.value === 'None') {
+                // Enhanced error feedback
+                input.focus();
+                input.style.borderColor = '#ef4444';
+                input.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.2)';
+                
+                // Show error message
+                this.showErrorMessage(input, 'This field is required');
+                
+                // Reset error styling after 3 seconds
+                setTimeout(() => {
+                    input.style.borderColor = '';
+                    input.style.boxShadow = '';
+                    this.hideErrorMessage(input);
+                }, 3000);
+                
+                return false;
+            }
+        }
+        return true;
+    }
+
+    showErrorMessage(input, message) {
+        // Remove existing error message
+        this.hideErrorMessage(input);
+        
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.style.cssText = `
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 0.375rem;
+            border-left: 3px solid #ef4444;
+        `;
+        errorDiv.textContent = message;
+        
+        input.parentNode.appendChild(errorDiv);
+    }
+
+    hideErrorMessage(input) {
+        const errorMessage = input.parentNode.querySelector('.error-message');
+        if (errorMessage) {
+            errorMessage.remove();
+        }
+    }
+
+    nextStep() {
+        if (this.validateCurrentStep()) {
+            if (this.currentStep < this.totalSteps - 1) {
+                this.currentStep++;
+                this.showStep(this.currentStep);
+                
+                // Add success feedback
+                this.addSuccessFeedback();
+            }
+        }
+    }
+
+    prevStep() {
+        if (this.currentStep > 0) {
+            this.currentStep--;
+            this.showStep(this.currentStep);
+        }
+    }
+
+    handleKeyPress(e) {
+        // Allow Enter to proceed to next step (except on textarea)
+        if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+            if (this.currentStep === this.totalSteps - 1) {
+                this.handleSubmit();
+            } else {
+                this.nextStep();
+            }
+        }
+        
+        // Allow Escape to go back
+        if (e.key === 'Escape' && this.currentStep > 0) {
+            this.prevStep();
+        }
+    }
+
+    handleSubmit() {
+        if (this.validateCurrentStep()) {
+            // Add loading state to submit button
+            this.submitBtn.classList.add('loading');
+            this.submitBtn.disabled = true;
+            this.submitBtn.textContent = '🚀 Processing...';
+            
+            // Submit the form
+            document.getElementById('multiStepForm').submit();
+        }
+    }
+
+    addSuccessFeedback() {
+        // Brief success animation
+        const currentCard = this.steps[this.currentStep - 1].querySelector('.question-card');
+        if (currentCard) {
+            currentCard.style.borderColor = '#10b981';
+            currentCard.style.boxShadow = '0 0 20px rgba(16, 185, 129, 0.3)';
+            
+            setTimeout(() => {
+                currentCard.style.borderColor = '';
+                currentCard.style.boxShadow = '';
+            }, 1000);
+        }
+    }
+}
+
+// Initialize the enhanced multi-step form when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    new MultiStepForm();
+    
+    // Add smooth scroll behavior
+    document.documentElement.style.scrollBehavior = 'smooth';
+    
+    // Add form analytics (optional)
+    console.log('🚀 AI Usage Pattern Assessment Form Loaded');
+});
+
+// Add star rating hover effects
+document.addEventListener('DOMContentLoaded', function() {
+    const starInputs = document.querySelectorAll('.star-rating input[type="radio"]');
+    const starLabels = document.querySelectorAll('.star-label');
+    
+    starLabels.forEach((label, index) => {
+        label.addEventListener('mouseenter', () => {
+            starLabels.forEach((star, starIndex) => {
+                if (starIndex >= index) {
+                    star.style.color = '#fbbf24';
+                    star.style.textShadow = '0 0 20px rgba(251, 191, 36, 0.8)';
+                } else {
+                    star.style.color = '#4b5563';
+                    star.style.textShadow = '0 0 10px rgba(59, 130, 246, 0.3)';
+                }
+            });
+        });
+    });
+    
+    document.querySelector('.star-rating').addEventListener('mouseleave', () => {
+        starLabels.forEach(star => {
+            const isChecked = star.previousElementSibling.checked;
+            if (!isChecked) {
+                star.style.color = '#4b5563';
+                star.style.textShadow = '0 0 10px rgba(59, 130, 246, 0.3)';
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
+
+{% block styles %}
+<style>
+    /* Enhanced Form Styles */
+    .research-card { 
+        backdrop-filter: blur(10px); 
+        background: rgba(17, 24, 39, 0.9);
+        border: 1px solid rgba(75, 85, 99, 0.3);
+    }
+    
+    .gradient-text { 
+        background: linear-gradient(135deg, #60a5fa, #34d399);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .question-step {
+        display: none;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+    
+    .question-step.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .question-card {
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        border-radius: 1rem;
+        padding: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .question-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .question-icon {
+        font-size: 2rem;
+        margin-right: 1rem;
+        filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
+    }
+
+    .question-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        margin: 0;
+    }
+
+    .question-subtitle {
+        color: #d1d5db;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+    }
+
+    .enhanced-select, .enhanced-input {
+        width: 100%;
+        padding: 1rem;
+        background: rgba(31, 41, 55, 0.8);
+        border: 2px solid rgba(75, 85, 99, 0.5);
+        border-radius: 0.75rem;
+        color: white;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .enhanced-select:focus, .enhanced-input:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        background: rgba(31, 41, 55, 0.9);
+    }
+
+    .enhanced-select option {
+        background: #1f2937;
+        color: white;
+        padding: 0.5rem;
+    }
+
+    .input-hint {
+        font-size: 0.875rem;
+        color: #9ca3af;
+        margin-top: 0.5rem;
+        font-style: italic;
+    }
+
+    .radio-group {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .radio-option {
+        cursor: pointer;
+    }
+
+    .radio-option input[type="radio"] {
+        display: none;
+    }
+
+    .radio-card {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        background: rgba(31, 41, 55, 0.6);
+        border: 2px solid rgba(75, 85, 99, 0.5);
+        border-radius: 0.75rem;
+        transition: all 0.3s ease;
+    }
+
+    .radio-option input[type="radio"]:checked + .radio-card {
+        background: rgba(59, 130, 246, 0.2);
+        border-color: #3b82f6;
+        transform: scale(1.02);
+    }
+
+    .radio-card:hover {
+        background: rgba(75, 85, 99, 0.3);
+        transform: translateY(-2px);
+    }
+
+    .radio-icon {
+        font-size: 1.5rem;
+        margin-right: 1rem;
+    }
+
+    .radio-text {
+        color: white;
+        font-weight: 500;
+    }
+
+    .star-rating {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin: 1.5rem 0;
+        flex-direction: row-reverse;
+    }
+
+    .star-rating input[type="radio"] {
+        display: none;
+    }
+
+    .star-label {
+        font-size: 3rem;
+        color: #4b5563;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+    }
+
+    .star-label:hover,
+    .star-rating input[type="radio"]:checked ~ .star-label {
+        color: #fbbf24;
+        text-shadow: 0 0 20px rgba(251, 191, 36, 0.8);
+        transform: scale(1.1);
+    }
+
+    .rating-labels {
+        display: flex;
+        justify-content: space-between;
+        color: #9ca3af;
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+    }
+
+    .navigation-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3rem;
+        gap: 1rem;
+    }
+
+    .btn-primary, .btn-secondary, .btn-success {
+        padding: 1rem 2rem;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: white;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #2563eb, #1e40af);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6);
+    }
+
+    .btn-secondary {
+        background: rgba(75, 85, 99, 0.8);
+        color: white;
+        border: 2px solid rgba(156, 163, 175, 0.5);
+    }
+
+    .btn-secondary:hover {
+        background: rgba(107, 114, 128, 0.9);
+        transform: translateY(-2px);
+    }
+
+    .btn-success {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+    }
+
+    .btn-success:hover {
+        background: linear-gradient(135deg, #059669, #047857);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.6);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .question-card {
+            padding: 1.5rem;
+        }
+        
+        .question-icon {
+            font-size: 1.5rem;
+        }
+        
+        .question-title {
+            font-size: 1.25rem;
+        }
+        
+        .star-label {
+            font-size: 2rem;
+        }
+        
+        .navigation-buttons {
+            flex-direction: column;
+        }
+        
+        .btn-primary, .btn-secondary, .btn-success {
+            width: 100%;
+        }
+    }
+
+    /* Loading Animation for Submit Button */
+    .btn-success.loading::after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        margin: auto;
+        border: 2px solid transparent;
+        border-top-color: #ffffff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+{% endblock %}
