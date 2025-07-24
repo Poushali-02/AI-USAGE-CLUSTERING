@@ -22,9 +22,6 @@ coverage.xml
 .DS_Store
 .env
 node_modules/
-# Images/
-
-# Keep Tailwind source files out:
 static/style.css
-tailwind.config.js
-package*.json
+package.json
+package-lock.json
