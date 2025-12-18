@@ -1,7 +1,7 @@
 # AI-USAGE-CLUSTERING
 
 A machine learning project focused on clustering and analyzing AI usage patterns using unsupervised learning techniques.
-
+Web application live at https://ai-usage-clustering.onrender.com/
 ## 📋 Overview
 
 This project implements clustering algorithms to identify and analyze patterns in AI tool usage data. By grouping similar usage behaviors, the system helps understand how different users interact with AI systems, enabling better insights for optimization and personalization.
