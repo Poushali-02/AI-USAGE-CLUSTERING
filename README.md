@@ -33,12 +33,8 @@ This project implements clustering algorithms to identify and analyze patterns i
 - **Evaluation Metrics**: Silhouette score, Davies-Bouldin index, and elbow method
 
 ## 📊 Dataset
-
-The project analyzes AI usage data including:
-- User interaction frequency
-- Feature utilization patterns
-- Session duration and timing
-- Tool preferences and behaviors
+The Kaggle notebook is available [here](https://www.kaggle.com/code/poushal02/ai-assistant-usage)
+The dataset used in this project is available [here](https://www.kaggle.com/datasets/ayeshasal89/ai-assistant-usage-in-student-life-synthetic)
 
 ## 🛠️ Installation
 
