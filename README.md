@@ -95,13 +95,13 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 ## 📝 Project Structure
 
 AI-USAGE-CLUSTERING/
-├── static/
-├── templates/ 
-├── .gitignore
-├── app.py
-├── model.pkl # model made on kaggle
-├── requirements.txt # Project dependencies
-└── README.md # Project documentation
+- ├── static/
+- ├── templates/ 
+- ├── .gitignore
+- ├── app.py
+- ├── model.pkl # model made on kaggle
+- ├── requirements.txt # Project dependencies
+- └── README.md # Project documentation
 
 ## 📚 Key Concepts
 
